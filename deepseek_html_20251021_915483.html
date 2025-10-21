@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森林心語 - 八正道心理測驗</title>
+    <meta name="description" content="探索你的八正道心靈地圖，在森林的靜謐中找到心靈方向">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #5D8A2F;
+            --secondary-color: #A3C46E;
+            --accent-color: #F2E86D;
+            --light-color: #F5F9E9;
+            --dark-color: #3A5A1C;
+            --text-color: #2C3E1F;
+            --gradient: linear-gradient(135deg, #5D8A2F 0%, #A3C46E 50%, #F5F9E9 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 導航欄 */
+        header {
+            background: rgba(245, 249, 233, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(93, 138, 47, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* 主頁區 */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(93, 138, 47, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(93, 138, 47, 0.6);
+            background: var(--dark-color);
+        }
+        
+        /* 角色介紹區 */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .character-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(93, 138, 47, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(93, 138, 47, 0.3);
+        }
+        
+        .character-img {
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .character-img i {
+            font-size: 6rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .character-content {
+            padding: 25px;
+        }
+        
+        .character-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .character-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        /* 心理測驗區 */
+        .quiz-section {
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 40px rgba(93, 138, 47, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quiz-header {
+            margin-bottom: 30px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            height: 12px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+            position: relative;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+        
+        .quiz-question {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-option {
+            padding: 15px 20px;
+            border: 2px solid var(--light-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: rgba(93, 138, 47, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(93, 138, 47, 0.1);
+        }
+        
+        .option-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* 測驗結果區 */
+        .result-container {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .result-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .result-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .radar-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        
+        .wisdom-quote {
+            background: var(--light-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            font-style: italic;
+            text-align: left;
+        }
+        
+        .wisdom-quote p {
+            margin-bottom: 10px;
+        }
+        
+        .wisdom-quote .author {
+            text-align: right;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        /* 抽籤區 */
+        .fortune-section {
+            background-color: var(--light-color);
+        }
+        
+        .fortune-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .fortune-wheel {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(93, 138, 47, 0.4);
+            transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1);
+        }
+        
+        .wheel-section {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: bottom right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .wheel-pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 40px;
+            background: var(--dark-color);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            z-index: 10;
+        }
+        
+        .fortune-result {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(93, 138, 47, 0.2);
+            display: none;
+        }
+        
+        .fortune-result.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--light-color);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .share-btn i {
+            margin-right: 5px;
+        }
+        
+        /* 頁尾 */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .fortune-wheel {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .quiz-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>森林心語</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#characters">角色介紹</a></li>
+                    <li><a href="#quiz">八正道測驗</a></li>
+                    <li><a href="#fortune">佛光籤</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主頁區 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>探索你的八正道心靈地圖</h1>
+                <p>在森林的靜謐中，透過八正道測驗找到屬於你的心靈方向，讓智慧之光照亮前行的道路。</p>
+                <a href="#quiz" class="btn">開始八正道測驗</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 角色介紹區 -->
+    <section class="section" id="characters">
+        <div class="container">
+            <div class="section-title">
+                <h2>森林守護者</h2>
+            </div>
+            <div class="character-grid">
+                <div class="character-card">
+                    <div class="character-img">
+                        <i class="fas fa-tree floating"></i>
+                    </div>
+                    <div class="character-content">
+                        <h3>森之智者</h3>
+                        <p>森林中最古老的樹靈，擁有千年智慧。他代表正見與正思惟，引導迷途者看清真相，培養正向思考。</p>
+                        <p>特質：睿智、沉穩、洞察力強</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img">
+                        <i class="fas fa-dove floating"></i>
+                    </div>
+                    <div class="character-content">
+                        <h3>語之鳥</h3>
+                        <p>擁有美妙歌喉的靈鳥，代表正語的力量。她的話語能撫慰心靈，傳遞善意與真理。</p>
+                        <p>特質：溫柔、善溝通、具感染力</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-img">
+                        <i class="fas fa-seedling floating"></i>
+                    </div>
+                    <div class="character-content">
+                        <h3>行之鹿</h3>
+                        <p>優雅而堅定的森林之鹿，象徵正業與正命。她以行動實踐善念，過著清淨正直的生活。</p>
+                        <p>特質：實踐力強、誠實、重倫理</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 心理測驗區 -->
+    <section class="section quiz-section" id="quiz">
+        <div class="container">
+            <div class="section-title">
+                <h2>八正道心理測驗</h2>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="current-progress">0%</span>
+                        <span id="question-counter">問題 1/25</span>
+                    </div>
+                </div>
+                <div class="quiz-question" id="question">當遇到煩惱時，你通常會？</div>
+                <div class="quiz-options" id="options">
+                    <!-- 選項由 JavaScript 動態生成 -->
+                </div>
+                <div class="quiz-nav">
+                    <button class="btn" id="prev-btn" disabled>上一題</button>
+                    <button class="btn" id="next-btn">下一題</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 抽籤區 -->
+    <section class="section fortune-section" id="fortune">
+        <div class="container">
+            <div class="section-title">
+                <h2>佛光籤・光明指路</h2>
+            </div>
+            <div class="fortune-container">
+                <div class="fortune-wheel">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel" id="wheel">
+                        <div class="wheel-section" style="transform: rotate(0deg); background: var(--primary-color);">智</div>
+                        <div class="wheel-section" style="transform: rotate(120deg); background: var(--dark-color);">慧</div>
+                        <div class="wheel-section" style="transform: rotate(240deg); background: var(--secondary-color);">光</div>
+                    </div>
+                </div>
+                <button class="btn" id="draw-btn">抽籤</button>
+                <div class="fortune-result" id="result">
+                    <div class="result-title">今日佛光籤</div>
+                    <div class="result-text" id="result-text">以智慧處事，以慈悲待人，凡事都能圓滿。</div>
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn"><i class="fab fa-line"></i>分享到LINE</a>
+                        <a href="#" class="share-btn"><i class="fab fa-facebook"></i>分享到FB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們區 -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>聯絡我們</h2>
+            </div>
+            <div class="contact-container" style="text-align: center;">
+                <p>如有任何問題或建議，歡迎透過以下方式聯繫我們</p>
+                <div class="social-links" style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                    <a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"><i class="fab fa-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i> 森林心語
+                </div>
+                <ul class="footer-links">
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#characters">角色介紹</a></li>
+                    <li><a href="#quiz">八正道測驗</a></li>
+                    <li><a href="#fortune">佛光籤</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                </ul>
+                <div class="copyright">
+                    &copy; 2023 森林心語 All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 八正道心理測驗資料
+        const eightfoldPath = {
+            "正見": { description: "了解真理、明辨是非", blessing: "向前有路光明在望" },
+            "正思惟": { description: "培養正向思考與動機", blessing: "向前有路光明在望" },
+            "正語": { description: "說話真實、善意", blessing: "向前有路光明在望" },
+            "正業": { description: "行為端正、行善利他", blessing: "向前有路光明在望" },
+            "正命": { description: "以正當方式生活", blessing: "向前有路光明在望" },
+            "正精進": { description: "不懈努力、自我修持", blessing: "向前有路光明在望" },
+            "正念": { description: "覺察當下、保持清明", blessing: "向前有路光明在望" },
+            "正定": { description: "心安定於智慧", blessing: "向前有路光明在望" }
+        };
+
+        // 星雲大師法語
+        const masterQuotes = [
+            "信仰，能開闊思想；信仰，能解脫煩惱；信仰，能美化生活；信仰，能安住身心；有了信仰，前途有望；有了信仰，生命有靠。",
+            "信佛，要信到與佛同在；念佛，要念到心佛不二；拜佛，要拜到和佛共存；行佛，要行到代佛渡生。",
+            "禪，能洗淨糾結不清的意識分別；禪，能化解頑劣不醒的迷情妄執，禪如山谷清泉，能帶給生命清涼自在。",
+            "用眼睛看清世間，可以認識世相；用耳朵諦聽善言，可以心開意解；用鼻孔探索清香，可以體會生活；用語言讚歎大眾，可以得到人和；用身體擁抱世界，可以得到友誼；用心意包容他人，可以昇華品格。",
+            "發菩提心，要永不退轉；修一切善行，廣度眾生常無捨離；發菩提心，要永不厭足，起最大精進，護持正法恆令久住。",
+            "生活中的禪心，可以相互交流，和諧群我；生活中的禪心，可以彼此欣賞，怡樂自他。",
+            "聞過要歡喜，心量要擴大；眼光須放遠，做事須計畫；小事不計較，好事不嫉妒；隨喜常讚歎，內心常安樂。",
+            "忍辱，可以摧毀固若金湯的傲慢；忍辱，可以銷熔堅如鎧甲的蠻橫。",
+            "不殺生，殺生斷慈悲種；不偷盜，偷盜斷喜捨種；不邪淫，邪淫斷解脫種；不妄語，妄語斷真實種；不瞋鬥，瞋鬥斷忍辱種。不退菩提心，退菩提心斷佛種。",
+            "三寶如靈丹妙藥，能醫治三毒心病；三寶如燈燭星月，能指引人生迷途；三寶如大海舟航，能脫離生死苦海。",
+            "悟是對生命再參透，參透生命能解脫煩惱；悟是對認知再看清，看清認知可消除疑惑。",
+            "君子與小人如何分別？君子能自制，小人不能自制；快樂與煩惱哪裡分別？快樂能分享，煩惱只能獨嘗。",
+            "對世間懷抱愛心，娑婆世界就是淨土；對世間充滿瞋恨，清涼佛土即成火宅。",
+            "悟是從矛盾中統一，悟是從複雜中單純，悟是從障礙中通達，悟是從枷鎖中解脫。",
+            "信仰如同馬達，是向前邁進的動力，有了信仰，能勇猛向前，不易疲倦懈怠；信仰好比羅盤，是人生大海的指標，有了信仰，能掌握方向，不會誤入歧途。",
+            "感應從結緣、布施中獲得；感應從守時、守信中獲得；感應從感動、感恩中獲得；感應從忍耐、信仰中獲得。",
+            "用信仰做飲食，來滋養我們的身體；用道德做服裝，來莊嚴我們的形相；用佛法做伴侶，來慰藉我們的心靈；用修道做房屋，來庇護我們的生命。",
+            "人生道路長遠，莫以一時定終身；人間性命短暫，不因百年忘無常。",
+            "眾生有眾相，相相皆不同；佛心無二心，心心皆無異。",
+            "懷抱「愛心」來對待世上一切，世界會更美麗；懷抱「喜心」來觀看世間所有，娑婆會變淨土。",
+            "秧苗田裡種，善因植在心；稻禾地上長，善果應在身。",
+            "善心有若及時雨，好讓枯木長新枝；惡念如同狂飆風，直叫大地盡蒙塵。",
+            "花兒種在泥土裡，花開花落，難保存風光；花兒種在心田裡，花開花落，永遠吐芬芳。",
+            "快樂，不在繁華熱鬧中，而在內心的寧靜裡；煩惱，不在謹言慎行中，而在人我的是非裡。",
+            "無私的慈悲，像春風、像冬陽；無盡的發心，像甘露、像能源。"
+        ];
+
+        // 25題測驗題目
+        const questions = [
+            {
+                question: "當遇到煩惱時，你通常會？",
+                options: [
+                    { text: "嘗試理解背後的原因", path: "正見" },
+                    { text: "反省自己是否有偏見", path: "正思惟" },
+                    { text: "找人聊聊並用話語化解", path: "正語" },
+                    { text: "去做點實際的事轉移注意", path: "正業" }
+                ]
+            },
+            {
+                question: "你最重視哪一種生活狀態？",
+                options: [
+                    { text: "心靜安穩", path: "正定" },
+                    { text: "活出價值", path: "正命" },
+                    { text: "持續成長", path: "正精進" },
+                    { text: "活在當下", path: "正念" }
+                ]
+            },
+            {
+                question: "面對困難的挑戰，你的態度是？",
+                options: [
+                    { text: "冷靜分析問題本質", path: "正見" },
+                    { text: "保持積極正向心態", path: "正思惟" },
+                    { text: "用鼓勵的話語激勵自己", path: "正語" },
+                    { text: "立即採取行動解決", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何選擇職業或生活方式？",
+                options: [
+                    { text: "選擇對社會有益的工作", path: "正命" },
+                    { text: "追求心靈成長的道路", path: "正定" },
+                    { text: "不斷學習提升自己", path: "正精進" },
+                    { text: "保持覺知活在當下", path: "正念" }
+                ]
+            },
+            {
+                question: "與人交流時，你注重什麼？",
+                options: [
+                    { text: "說真實不虛的話", path: "正語" },
+                    { text: "用智慧引導對話", path: "正見" },
+                    { text: "保持善意和同理心", path: "正思惟" },
+                    { text: "專注傾聽對方", path: "正念" }
+                ]
+            },
+            {
+                question: "面對目標，你的做法是？",
+                options: [
+                    { text: "持續努力不懈怠", path: "正精進" },
+                    { text: "用正確方法實踐", path: "正業" },
+                    { text: "保持內心平靜專注", path: "正定" },
+                    { text: "時時覺察進度", path: "正念" }
+                ]
+            },
+            {
+                question: "你如何看待日常生活？",
+                options: [
+                    { text: "保持清淨正直", path: "正命" },
+                    { text: "用智慧看待一切", path: "正見" },
+                    { text: "心存善念對待", path: "正思惟" },
+                    { text: "言行一致真誠", path: "正語" }
+                ]
+            },
+            {
+                question: "遇到誘惑時，你如何應對？",
+                options: [
+                    { text: "看清事物本質", path: "正見" },
+                    { text: "保持正向思考", path: "正思惟" },
+                    { text: "用善語提醒自己", path: "正語" },
+                    { text: "遠離不良環境", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何培養內心力量？",
+                options: [
+                    { text: "持續修行精進", path: "正精進" },
+                    { text: "保持正念覺知", path: "正念" },
+                    { text: "深入禪定修心", path: "正定" },
+                    { text: "過清淨生活", path: "正命" }
+                ]
+            },
+            {
+                question: "你認為什麼最重要？",
+                options: [
+                    { text: "正確的見解", path: "正見" },
+                    { text: "純淨的意念", path: "正思惟" },
+                    { text: "善良的言語", path: "正語" },
+                    { text: "正直的行為", path: "正業" }
+                ]
+            },
+            {
+                question: "當面對批評時，你的反應是？",
+                options: [
+                    { text: "理性分析批評的合理性", path: "正見" },
+                    { text: "反省自己是否有不足", path: "正思惟" },
+                    { text: "用平和語氣回應", path: "正語" },
+                    { text: "以行動證明自己", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何規劃時間？",
+                options: [
+                    { text: "設定清晰的目標", path: "正見" },
+                    { text: "思考優先順序", path: "正思惟" },
+                    { text: "與他人溝通協調", path: "正語" },
+                    { text: "立即開始行動", path: "正業" }
+                ]
+            },
+            {
+                question: "面對壓力時，你如何調適？",
+                options: [
+                    { text: "分析壓力來源", path: "正見" },
+                    { text: "轉念正向思考", path: "正思惟" },
+                    { text: "找人傾訴分享", path: "正語" },
+                    { text: "透過運動釋放", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何學習新事物？",
+                options: [
+                    { text: "理解背後的原理", path: "正見" },
+                    { text: "思考如何應用", path: "正思惟" },
+                    { text: "與他人討論交流", path: "正語" },
+                    { text: "實際動手操作", path: "正業" }
+                ]
+            },
+            {
+                question: "面對人際衝突，你的處理方式是？",
+                options: [
+                    { text: "釐清問題核心", path: "正見" },
+                    { text: "站在對方角度思考", path: "正思惟" },
+                    { text: "用溫和語言溝通", path: "正語" },
+                    { text: "用行動化解誤會", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何面對失敗？",
+                options: [
+                    { text: "分析失敗原因", path: "正見" },
+                    { text: "保持正向心態", path: "正思惟" },
+                    { text: "用言語鼓勵自己", path: "正語" },
+                    { text: "繼續努力不懈", path: "正精進" }
+                ]
+            },
+            {
+                question: "你如何幫助他人？",
+                options: [
+                    { text: "給予智慧的建議", path: "正見" },
+                    { text: "用善意的心念祝福", path: "正思惟" },
+                    { text: "說安慰鼓勵的話", path: "正語" },
+                    { text: "實際付出行動", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何保持內心平靜？",
+                options: [
+                    { text: "透過冥想禪修", path: "正定" },
+                    { text: "培養正念覺知", path: "正念" },
+                    { text: "持續修行精進", path: "正精進" },
+                    { text: "過簡樸生活", path: "正命" }
+                ]
+            },
+            {
+                question: "你如何看待物質享受？",
+                options: [
+                    { text: "知足常樂不貪求", path: "正命" },
+                    { text: "保持內心平靜", path: "正定" },
+                    { text: "持續修行提升", path: "正精進" },
+                    { text: "覺知當下感受", path: "正念" }
+                ]
+            },
+            {
+                question: "你如何面對人生的無常？",
+                options: [
+                    { text: "用智慧理解無常", path: "正見" },
+                    { text: "保持正向心念", path: "正思惟" },
+                    { text: "說安慰人心的話", path: "正語" },
+                    { text: "積極面對變化", path: "正精進" }
+                ]
+            },
+            {
+                question: "你如何培養專注力？",
+                options: [
+                    { text: "理解專注的重要性", path: "正見" },
+                    { text: "培養正向動機", path: "正思惟" },
+                    { text: "用言語提醒自己", path: "正語" },
+                    { text: "持續練習專注", path: "正精進" }
+                ]
+            },
+            {
+                question: "你如何面對他人的成功？",
+                options: [
+                    { text: "理性分析成功因素", path: "正見" },
+                    { text: "隨喜讚歎他人", path: "正思惟" },
+                    { text: "說祝福的話語", path: "正語" },
+                    { text: "以他人為榜樣努力", path: "正精進" }
+                ]
+            },
+            {
+                question: "你如何處理負面情緒？",
+                options: [
+                    { text: "理解情緒的本質", path: "正見" },
+                    { text: "轉化負面念頭", path: "正思惟" },
+                    { text: "用正語疏導情緒", path: "正語" },
+                    { text: "透過修行調伏內心", path: "正定" }
+                ]
+            },
+            {
+                question: "你如何看待生命的意義？",
+                options: [
+                    { text: "追求真理智慧", path: "正見" },
+                    { text: "培養慈悲善念", path: "正思惟" },
+                    { text: "傳遞正能量話語", path: "正語" },
+                    { text: "利益眾生的行動", path: "正業" }
+                ]
+            },
+            {
+                question: "你如何實踐理想？",
+                options: [
+                    { text: "確立正確方向", path: "正見" },
+                    { text: "培養堅定信念", path: "正思惟" },
+                    { text: "用言語激勵他人", path: "正語" },
+                    { text: "持續努力實踐", path: "正精進" }
+                ]
+            }
+        ];
+
+        // 測驗相關變數
+        let currentQuestion = 0;
+        let userAnswers = [];
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const questionCounter = document.getElementById('question-counter');
+        const progressBar = document.getElementById('progress-bar');
+        const currentProgress = document.getElementById('current-progress');
+        
+        // 更新進度條
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentProgress.textContent = `${Math.round(progress)}%`;
+            questionCounter.textContent = `問題 ${currentQuestion + 1}/${questions.length}`;
+        }
+        
+        // 初始化測驗
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionElement.textContent = question.question;
+            updateProgress();
+            
+            optionsElement.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'quiz-option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.innerHTML = `
+                    <div class="option-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="option-text">${option.text}</div>
+                `;
+                optionElement.dataset.index = index;
+                optionElement.addEventListener('click', selectOption);
+                optionsElement.appendChild(optionElement);
+            });
+            
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === questions.length - 1 ? '查看結果' : '下一題';
+        }
+        
+        function selectOption(e) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            e.currentTarget.classList.add('selected');
+            userAnswers[currentQuestion] = parseInt(e.currentTarget.dataset.index);
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (userAnswers[currentQuestion] === undefined) {
+                alert('請選擇一個答案！');
+                return;
+            }
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showQuizResult();
+            }
+        });
+        
+        // 顯示測驗結果
+        function showQuizResult() {
+            // 計算各八正道的得分
+            const scores = {
+                "正見": 0, "正思惟": 0, "正語": 0, "正業": 0,
+                "正命": 0, "正精進": 0, "正念": 0, "正定": 0
+            };
+            
+            userAnswers.forEach((answerIndex, questionIndex) => {
+                const selectedPath = questions[questionIndex].options[answerIndex].path;
+                scores[selectedPath]++;
+            });
+            
+            // 找出最高分的八正道
+            const maxScore = Math.max(...Object.values(scores));
+            const primaryPath = Object.keys(scores).find(key => scores[key] === maxScore);
+            
+            // 隨機選擇星雲大師法語
+            const randomQuote = masterQuotes[Math.floor(Math.random() * masterQuotes.length)];
+            
+            // 準備雷達圖數據
+            const radarData = {
+                labels: Object.keys(scores),
+                datasets: [{
+                    label: '八正道得分',
+                    data: Object.values(scores),
+                    backgroundColor: 'rgba(93, 138, 47, 0.2)',
+                    borderColor: 'rgba(93, 138, 47, 1)',
+                    pointBackgroundColor: 'rgba(93, 138, 47, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(93, 138, 47, 1)'
+                }]
+            };
+            
+            // 創建結果HTML
+            const resultHTML = `
+                <div class="result-container">
+                    <h2 class="result-title">你的八正道類型：${primaryPath}</h2>
+                    <p class="result-description">${eightfoldPath[primaryPath].description}</p>
+                    
+                    <div class="radar-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    
+                    <div class="wisdom-quote">
+                        <p>${randomQuote}</p>
+                        <p class="author">- 星雲大師《佛光菜根譚》</p>
+                    </div>
+                    
+                    <p style="font-size: 1.2rem; color: var(--primary-color); margin: 20px 0; font-weight: bold;">
+                        ${eightfoldPath[primaryPath].blessing}
+                    </p>
+                    
+                    <button class="btn" id="retry-btn">重新測驗</button>
+                </div>
+            `;
+            
+            // 更新測驗區域顯示結果
+            document.querySelector('.quiz-container').innerHTML = resultHTML;
+            
+            // 繪製雷達圖
+            const ctx = document.getElementById('radarChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: radarData,
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: Math.max(...Object.values(scores)) + 2
+                        }
+                    }
+                }
+            });
+            
+            // 重新測驗按鈕
+            document.getElementById('retry-btn').addEventListener('click', () => {
+                currentQuestion = 0;
+                userAnswers = [];
+                loadQuestion();
+            });
+        }
+        
+        // 抽籤功能
+        const drawBtn = document.getElementById('draw-btn');
+        const resultElement = document.getElementById('result');
+        const resultTextElement = document.getElementById('result-text');
+        const wheel = document.getElementById('wheel');
+        
+        drawBtn.addEventListener('click', () => {
+            // 重置轉盤
+            wheel.style.transform = 'rotate(0deg)';
+            
+            // 禁用按鈕防止重複點擊
+            drawBtn.disabled = true;
+            
+            // 旋轉動畫
+            setTimeout(() => {
+                const rotations = 5 + Math.random() * 5; // 5-10圈
+                const finalRotation = rotations * 360 + Math.floor(Math.random() * 360);
+                wheel.style.transform = `rotate(${finalRotation}deg)`;
+                
+                // 顯示結果
+                setTimeout(() => {
+                    const randomFortune = masterQuotes[Math.floor(Math.random() * masterQuotes.length)];
+                    resultTextElement.textContent = randomFortune;
+                    resultElement.classList.add('show');
+                    drawBtn.disabled = false;
+                    
+                    // 滾動到結果區域
+                    resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 2000);
+            }, 10);
+        });
+        
+        // 平滑滾動導航
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // 初始化
+        loadQuestion();
+    </script>
+</body>
+</html>
