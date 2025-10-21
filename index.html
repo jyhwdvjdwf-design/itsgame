@@ -1,0 +1,1252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang TC Light'; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang TC Light'; -webkit-text-stroke: #000000; min-height: 17.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="zh-TW"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;森林心語 - 八正道心理測驗&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>:root {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--primary-color: #5D8A2F; /* 森林綠 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--secondary-color: #A3C46E; /* 淺綠色 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--accent-color: #F2E86D; /* 柔和黃色 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--light-color: #F5F9E9; /* 極淺綠 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--dark-color: #3A5A1C; /* 深綠色 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--text-color: #2C3E1F; /* 深灰綠文字 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>--gradient: linear-gradient(135deg, #5D8A2F 0%, #A3C46E 50%, #F5F9E9 100%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>* {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--text-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-image:<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>radial-gradient(circle at 10% 20%, rgba(163, 196, 110, 0.2) 0%, transparent 20%),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>radial-gradient(circle at 90% 80%, rgba(93, 138, 47, 0.2) 0%, transparent 20%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 1200px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 0 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 導航欄 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>header {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(245, 249, 233, 0.9);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: fixed;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 1000;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 20px rgba(93, 138, 47, 0.2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nav {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 15px 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.logo i {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>list-style: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links li {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-left: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links a {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--text-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: 500;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: color 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links a:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links a::after {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>bottom: -5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 2px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: width 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.nav-links a:hover::after {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 主頁區 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 150px 0 100px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--gradient);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero::before {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23A3C46E' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>opacity: 0.3;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-content {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 800px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero h1 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, var(--primary-color), var(--dark-color));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-shadow: 0 5px 15px rgba(93, 138, 47, 0.3);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero p {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: inline-block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 12px 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 50px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: 600;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: all 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(93, 138, 47, 0.4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 7px 20px rgba(93, 138, 47, 0.6);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--dark-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 角色介紹區 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 100px 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-title {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 60px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-title h2 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: inline-block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, var(--primary-color), var(--dark-color));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.section-title::after {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>bottom: -15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 80px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 4px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 2px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-grid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: grid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 40px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-card {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(93, 138, 47, 0.2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: transform 0.3s, box-shadow 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-card:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateY(-10px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 40px rgba(93, 138, 47, 0.3);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-img {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 250px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--gradient);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-img i {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 6rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>opacity: 0.8;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-content {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 25px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-content h3 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.character-content p {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 心理測驗區 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-section {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--gradient);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-section::before {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>content: '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 800px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 40px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 40px rgba(93, 138, 47, 0.3);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 1;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-header {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.progress-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 12px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.progress-bar {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--gradient);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 0%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: width 0.5s ease-in-out;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.progress-text {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--dark-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-question {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-options {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: grid;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-option {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 15px 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 2px solid var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: all 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-option:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(93, 138, 47, 0.05);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-option.selected {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(93, 138, 47, 0.1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.option-icon {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.quiz-nav {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: space-between;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 測驗結果區 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.result-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.result-title {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 2rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.result-description {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.radar-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 500px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wisdom-quote {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-left: 4px solid var(--accent-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 30px 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-style: italic;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: left;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wisdom-quote p {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wisdom-quote .author {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: right;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--dark-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 抽籤區 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fortune-section {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fortune-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 600px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fortune-wheel {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 300px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 300px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto 40px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wheel {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--gradient);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: relative;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>overflow: hidden;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(93, 138, 47, 0.4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wheel-section {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform-origin: bottom right;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-weight: bold;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.wheel-pointer {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>position: absolute;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>top: -20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>left: 50%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>width: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>height: 40px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--dark-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>clip-path: polygon(50% 0%, 0% 100%, 100% 100%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>z-index: 10;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fortune-result {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 30px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(93, 138, 47, 0.2);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.fortune-result.show {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: block;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: fadeIn 0.5s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.result-title {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.result-text {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>line-height: 1.6;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.share-buttons {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>gap: 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.share-btn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: inline-flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>align-items: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 8px 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--light-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 50px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--text-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: all 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.share-btn:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--primary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.share-btn i {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-right: 5px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 頁尾 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: var(--dark-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 40px 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-content {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 800px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-logo {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-links {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: flex;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>justify-content: center;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>list-style: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-links li {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 15px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-links a {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-decoration: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: color 0.3s;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.footer-links a:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: var(--secondary-color);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.copyright {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>opacity: 0.8;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 動畫 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes fadeIn {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>from { opacity: 0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>to { opacity: 1; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@keyframes float {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>0% { transform: translateY(0px); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>50% { transform: translateY(-10px); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>100% { transform: translateY(0px); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.floating {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>animation: float 5s ease-in-out infinite;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* 響應式設計 */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.nav-links {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>display: none;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.hero h1 {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>font-size: 2.5rem;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.character-grid {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.fortune-wheel {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>width: 250px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>height: 250px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.quiz-container {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>padding: 20px;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 導航欄 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;header&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;nav&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="logo"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-leaf"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span&gt;森林心語&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul class="nav-links"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#home"&gt;首頁&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#characters"&gt;角色介紹&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#quiz"&gt;八正道測驗&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#fortune"&gt;佛光籤&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#contact"&gt;聯絡我們&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 主頁區 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero" id="home"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hero-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1&gt;探索你的八正道心靈地圖&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;在森林的靜謐中，透過八正道測驗找到屬於你的心靈方向，讓智慧之光照亮前行的道路。&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#quiz" class="btn"&gt;開始八正道測驗&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 角色介紹區 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="section" id="characters"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="section-title"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;森林守護者&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="character-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="character-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-img"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-tree floating"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;森之智者&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;森林中最古老的樹靈，擁有千年智慧。他代表正見與正思惟，引導迷途者看清真相，培養正向思考。&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;特質：睿智、沉穩、洞察力強&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="character-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-img"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-dove floating"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;語之鳥&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;擁有美妙歌喉的靈鳥，代表正語的力量。她的話語能撫慰心靈，傳遞善意與真理。&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;特質：溫柔、善溝通、具感染力&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="character-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-img"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fas fa-seedling floating"&gt;&lt;/i&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="character-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;行之鹿&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;優雅而堅定的森林之鹿，象徵正業與正命。她以行動實踐善念，過著清淨正直的生活。&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;特質：實踐力強、誠實、重倫理&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 心理測驗區 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="section quiz-section" id="quiz"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="section-title"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;八正道心理測驗&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="quiz-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="quiz-header"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="progress-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="progress-bar" id="progress-bar"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="progress-text"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span id="current-progress"&gt;0%&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span id="question-counter"&gt;問題 1/25&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="quiz-question" id="question"&gt;當遇到煩惱時，你通常會？&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="quiz-options" id="options"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;!-- 選項由 JavaScript 動態生成 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="quiz-nav"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button class="btn" id="prev-btn" disabled&gt;上一題&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button class="btn" id="next-btn"&gt;下一題&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 抽籤區 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="section fortune-section" id="fortune"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="section-title"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;佛光籤・光明指路&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="fortune-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="fortune-wheel"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="wheel-pointer"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="wheel" id="wheel"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="wheel-section" style="transform: rotate(0deg); background: var(--primary-color);"&gt;智&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="wheel-section" style="transform: rotate(120deg); background: var(--dark-color);"&gt;慧&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="wheel-section" style="transform: rotate(240deg); background: var(--secondary-color);"&gt;光&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button class="btn" id="draw-btn"&gt;抽籤&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="fortune-result" id="result"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="result-title"&gt;今日佛光籤&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="result-text" id="result-text"&gt;以智慧處事，以慈悲待人，凡事都能圓滿。&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="share-buttons"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;a href="#" class="share-btn"&gt;&lt;i class="fab fa-line"&gt;&lt;/i&gt;分享到LINE&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;a href="#" class="share-btn"&gt;&lt;i class="fab fa-facebook"&gt;&lt;/i&gt;分享到FB&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 聯絡我們區 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="section" id="contact"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="section-title"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2&gt;聯絡我們&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="contact-container" style="text-align: center;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;如有任何問題或建議，歡迎透過以下方式聯繫我們&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="social-links" style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"&gt;&lt;i class="fab fa-instagram"&gt;&lt;/i&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"&gt;&lt;i class="fab fa-facebook"&gt;&lt;/i&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="social-link" style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-color); color: white; font-size: 1.2rem; text-decoration: none; transition: all 0.3s;"&gt;&lt;i class="fab fa-line"&gt;&lt;/i&gt;&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- 頁尾 --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="footer-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="footer-logo"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i class="fas fa-leaf"&gt;&lt;/i&gt; 森林心語</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul class="footer-links"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#home"&gt;首頁&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#characters"&gt;角色介紹&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#quiz"&gt;八正道測驗&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#fortune"&gt;佛光籤&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;li&gt;&lt;a href="#contact"&gt;聯絡我們&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="copyright"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&amp;copy; 2023 森林心語 All Rights Reserved.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 八正道心理測驗資料</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const eightfoldPath = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正見": { description: "了解真理、明辨是非", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正思惟": { description: "培養正向思考與動機", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正語": { description: "說話真實、善意", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正業": { description: "行為端正、行善利他", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正命": { description: "以正當方式生活", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正精進": { description: "不懈努力、自我修持", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正念": { description: "覺察當下、保持清明", blessing: "向前有路光明在望" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"正定": { description: "心安定於智慧", blessing: "向前有路光明在望" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 星雲大師法語</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const masterQuotes = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"信仰，能開闊思想；信仰，能解脫煩惱；信仰，能美化生活；信仰，能安住身心；有了信仰，前途有望；有了信仰，生命有靠。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"信佛，要信到與佛同在；念佛，要念到心佛不二；拜佛，要拜到和佛共存；行佛，要行到代佛渡生。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"禪，能洗淨糾結不清的意識分別；禪，能化解頑劣不醒的迷情妄執，禪如山谷清泉，能帶給生命清涼自在。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"用眼睛看清世間，可以認識世相；用耳朵諦聽善言，可以心開意解；用鼻孔探索清香，可以體會生活；用語言讚歎大眾，可以得到人和；用身體擁抱世界，可以得到友誼；用心意包容他人，可以昇華品格。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"發菩提心，要永不退轉；修一切善行，廣度眾生常無捨離；發菩提心，要永不厭足，起最大精進，護持正法恆令久住。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"生活中的禪心，可以相互交流，和諧群我；生活中的禪心，可以彼此欣賞，怡樂自他。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"聞過要歡喜，心量要擴大；眼光須放遠，做事須計畫；小事不計較，好事不嫉妒；隨喜常讚歎，內心常安樂。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"忍辱，可以摧毀固若金湯的傲慢；忍辱，可以銷熔堅如鎧甲的蠻橫。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"不殺生，殺生斷慈悲種；不偷盜，偷盜斷喜捨種；不邪淫，邪淫斷解脫種；不妄語，妄語斷真實種；不瞋鬥，瞋鬥斷忍辱種。不退菩提心，退菩提心斷佛種。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"三寶如靈丹妙藥，能醫治三毒心病；三寶如燈燭星月，能指引人生迷途；三寶如大海舟航，能脫離生死苦海。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"悟是對生命再參透，參透生命能解脫煩惱；悟是對認知再看清，看清認知可消除疑惑。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"君子與小人如何分別？君子能自制，小人不能自制；快樂與煩惱哪裡分別？快樂能分享，煩惱只能獨嘗。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"對世間懷抱愛心，娑婆世界就是淨土；對世間充滿瞋恨，清涼佛土即成火宅。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"悟是從矛盾中統一，悟是從複雜中單純，悟是從障礙中通達，悟是從枷鎖中解脫。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"信仰如同馬達，是向前邁進的動力，有了信仰，能勇猛向前，不易疲倦懈怠；信仰好比羅盤，是人生大海的指標，有了信仰，能掌握方向，不會誤入歧途。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"感應從結緣、布施中獲得；感應從守時、守信中獲得；感應從感動、感恩中獲得；感應從忍耐、信仰中獲得。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"用信仰做飲食，來滋養我們的身體；用道德做服裝，來莊嚴我們的形相；用佛法做伴侶，來慰藉我們的心靈；用修道做房屋，來庇護我們的生命。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"人生道路長遠，莫以一時定終身；人間性命短暫，不因百年忘無常。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"眾生有眾相，相相皆不同；佛心無二心，心心皆無異。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"懷抱「愛心」來對待世上一切，世界會更美麗；懷抱「喜心」來觀看世間所有，娑婆會變淨土。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"秧苗田裡種，善因植在心；稻禾地上長，善果應在身。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"善心有若及時雨，好讓枯木長新枝；惡念如同狂飆風，直叫大地盡蒙塵。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"花兒種在泥土裡，花開花落，難保存風光；花兒種在心田裡，花開花落，永遠吐芬芳。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"快樂，不在繁華熱鬧中，而在內心的寧靜裡；煩惱，不在謹言慎行中，而在人我的是非裡。",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"無私的慈悲，像春風、像冬陽；無盡的發心，像甘露、像能源。"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 25題測驗題目</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const questions = [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "當遇到煩惱時，你通常會？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "嘗試理解背後的原因", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "反省自己是否有偏見", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "找人聊聊並用話語化解", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "去做點實際的事轉移注意", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你最重視哪一種生活狀態？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "心靜安穩", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "活出價值", path: "正命" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續成長", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "活在當下", path: "正念" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "面對困難的挑戰，你的態度是？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "冷靜分析問題本質", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持積極正向心態", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用鼓勵的話語激勵自己", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "立即採取行動解決", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何選擇職業或生活方式？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "選擇對社會有益的工作", path: "正命" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "追求心靈成長的道路", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "不斷學習提升自己", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持覺知活在當下", path: "正念" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "與人交流時，你注重什麼？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "說真實不虛的話", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用智慧引導對話", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持善意和同理心", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "專注傾聽對方", path: "正念" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "面對目標，你的做法是？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續努力不懈怠", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用正確方法實踐", path: "正業" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持內心平靜專注", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "時時覺察進度", path: "正念" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何看待日常生活？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持清淨正直", path: "正命" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用智慧看待一切", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "心存善念對待", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "言行一致真誠", path: "正語" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "遇到誘惑時，你如何應對？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "看清事物本質", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持正向思考", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用善語提醒自己", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "遠離不良環境", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何培養內心力量？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續修行精進", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持正念覺知", path: "正念" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "深入禪定修心", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "過清淨生活", path: "正命" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你認為什麼最重要？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "正確的見解", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "純淨的意念", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "善良的言語", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "正直的行為", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "當面對批評時，你的反應是？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "理性分析批評的合理性", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "反省自己是否有不足", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用平和語氣回應", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "以行動證明自己", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何規劃時間？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "設定清晰的目標", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "思考優先順序", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "與他人溝通協調", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "立即開始行動", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "面對壓力時，你如何調適？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "分析壓力來源", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "轉念正向思考", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "找人傾訴分享", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "透過運動釋放", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何學習新事物？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "理解背後的原理", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "思考如何應用", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "與他人討論交流", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "實際動手操作", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "面對人際衝突，你的處理方式是？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "釐清問題核心", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "站在對方角度思考", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用溫和語言溝通", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用行動化解誤會", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何面對失敗？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "分析失敗原因", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持正向心態", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用言語鼓勵自己", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "繼續努力不懈", path: "正精進" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何幫助他人？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "給予智慧的建議", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用善意的心念祝福", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "說安慰鼓勵的話", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "實際付出行動", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何保持內心平靜？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "透過冥想禪修", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "培養正念覺知", path: "正念" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續修行精進", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "過簡樸生活", path: "正命" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何看待物質享受？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "知足常樂不貪求", path: "正命" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持內心平靜", path: "正定" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續修行提升", path: "正精進" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "覺知當下感受", path: "正念" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何面對人生的無常？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用智慧理解無常", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "保持正向心念", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "說安慰人心的話", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "積極面對變化", path: "正精進" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何培養專注力？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "理解專注的重要性", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "培養正向動機", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用言語提醒自己", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續練習專注", path: "正精進" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何面對他人的成功？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "理性分析成功因素", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "隨喜讚歎他人", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "說祝福的話語", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "以他人為榜樣努力", path: "正精進" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何處理負面情緒？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "理解情緒的本質", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "轉化負面念頭", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用正語疏導情緒", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "透過修行調伏內心", path: "正定" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何看待生命的意義？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "追求真理智慧", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "培養慈悲善念", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "傳遞正能量話語", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "利益眾生的行動", path: "正業" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>question: "你如何實踐理想？",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "確立正確方向", path: "正見" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "培養堅定信念", path: "正思惟" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "用言語激勵他人", path: "正語" },</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>{ text: "持續努力實踐", path: "正精進" }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 測驗相關變數</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let currentQuestion = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let userAnswers = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const questionElement = document.getElementById('question');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const optionsElement = document.getElementById('options');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const prevBtn = document.getElementById('prev-btn');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const nextBtn = document.getElementById('next-btn');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const questionCounter = document.getElementById('question-counter');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const progressBar = document.getElementById('progress-bar');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const currentProgress = document.getElementById('current-progress');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 更新進度條</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function updateProgress() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const progress = ((currentQuestion + 1) / questions.length) * 100;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>progressBar.style.width = `${progress}%`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>currentProgress.textContent = `${Math.round(progress)}%`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>questionCounter.textContent = `問題 ${currentQuestion + 1}/${questions.length}`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 初始化測驗</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function loadQuestion() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const question = questions[currentQuestion];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>questionElement.textContent = question.question;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>updateProgress();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>optionsElement.innerHTML = '';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>question.options.forEach((option, index) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const optionElement = document.createElement('div');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionElement.className = 'quiz-option';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (userAnswers[currentQuestion] === index) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>optionElement.classList.add('selected');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionElement.innerHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="option-icon"&gt;&lt;i class="fas fa-leaf"&gt;&lt;/i&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="option-text"&gt;${option.text}&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionElement.dataset.index = index;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionElement.addEventListener('click', selectOption);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>optionsElement.appendChild(optionElement);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>prevBtn.disabled = currentQuestion === 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>nextBtn.textContent = currentQuestion === questions.length - 1 ? '查看結果' : '下一題';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function selectOption(e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const options = document.querySelectorAll('.quiz-option');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>options.forEach(option =&gt; option.classList.remove('selected'));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.currentTarget.classList.add('selected');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>userAnswers[currentQuestion] = parseInt(e.currentTarget.dataset.index);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>prevBtn.addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (currentQuestion &gt; 0) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentQuestion--;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>loadQuestion();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>nextBtn.addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (userAnswers[currentQuestion] === undefined) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>alert('請選擇一個答案！');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (currentQuestion &lt; questions.length - 1) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentQuestion++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>loadQuestion();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>showQuizResult();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 顯示測驗結果</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function showQuizResult() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 計算各八正道的得分</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const scores = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"正見": 0, "正思惟": 0, "正語": 0, "正業": 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>"正命": 0, "正精進": 0, "正念": 0, "正定": 0</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>userAnswers.forEach((answerIndex, questionIndex) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const selectedPath = questions[questionIndex].options[answerIndex].path;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>scores[selectedPath]++;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 找出最高分的八正道</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const maxScore = Math.max(...Object.values(scores));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const primaryPath = Object.keys(scores).find(key =&gt; scores[key] === maxScore);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 隨機選擇星雲大師法語</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const randomQuote = masterQuotes[Math.floor(Math.random() * masterQuotes.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 準備雷達圖數據</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const radarData = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>labels: Object.keys(scores),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>datasets: [{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>label: '八正道得分',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>data: Object.values(scores),</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>backgroundColor: 'rgba(93, 138, 47, 0.2)',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>borderColor: 'rgba(93, 138, 47, 1)',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>pointBackgroundColor: 'rgba(93, 138, 47, 1)',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>pointBorderColor: '#fff',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>pointHoverBackgroundColor: '#fff',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>pointHoverBorderColor: 'rgba(93, 138, 47, 1)'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 創建結果HTML</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const resultHTML = `</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="result-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="result-title"&gt;你的八正道類型：${primaryPath}&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="result-description"&gt;${eightfoldPath[primaryPath].description}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="radar-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;canvas id="radarChart"&gt;&lt;/canvas&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="wisdom-quote"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p&gt;${randomQuote}&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="author"&gt;- 星雲大師《佛光菜根譚》&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p style="font-size: 1.2rem; color: var(--primary-color); margin: 20px 0; font-weight: bold;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>${eightfoldPath[primaryPath].blessing}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button class="btn" id="retry-btn"&gt;重新測驗&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 更新測驗區域顯示結果</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.querySelector('.quiz-container').innerHTML = resultHTML;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 繪製雷達圖</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const ctx = document.getElementById('radarChart').getContext('2d');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>new Chart(ctx, {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>type: 'radar',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>data: radarData,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>options: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>scales: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>r: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>angleLines: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                                </span>display: true</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>suggestedMin: 0,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>suggestedMax: Math.max(...Object.values(scores)) + 2</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 重新測驗按鈕</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>document.getElementById('retry-btn').addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>currentQuestion = 0;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userAnswers = [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>loadQuestion();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 抽籤功能</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const drawBtn = document.getElementById('draw-btn');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const resultElement = document.getElementById('result');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const resultTextElement = document.getElementById('result-text');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const wheel = document.getElementById('wheel');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>drawBtn.addEventListener('click', () =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 重置轉盤</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>wheel.style.transform = 'rotate(0deg)';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 禁用按鈕防止重複點擊</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>drawBtn.disabled = true;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>// 旋轉動畫</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const rotations = 5 + Math.random() * 5; // 5-10圈</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const finalRotation = rotations * 360 + Math.floor(Math.random() * 360);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>wheel.style.transform = `rotate(${finalRotation}deg)`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// 顯示結果</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const randomFortune = masterQuotes[Math.floor(Math.random() * masterQuotes.length)];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>resultTextElement.textContent = randomFortune;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>resultElement.classList.add('show');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>drawBtn.disabled = false;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// 滾動到結果區域</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}, 2000);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 10);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 平滑滾動導航</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const target = document.querySelector(this.getAttribute('href'));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (target) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>target.scrollIntoView({</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>behavior: 'smooth',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>block: 'start'</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// 初始化</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>loadQuestion();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
